@@ -1,0 +1,18 @@
+﻿# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+npm-debug.log*
+
+# Env
+.env
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════
+   HELADERÍA — 
+   ═══════════════════════════════════════ */
+
+:root {
+  /* Fondos */
+  --bg-base:     #fdf8f3;
+  --bg-surface:  #ffffff;
+  --bg-elevated: #fef3f0;
+  --bg-overlay:  #fde8e4;
+
+  /* Bordes */
+  --border-subtle:  rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.1);
+  --border-strong:  rgba(0, 0, 0, 0.18);
+
+  /* Texto */
+  --text-primary:   #1a1207;
+  --text-secondary: #6b5c4a;
+  --text-tertiary:  #9c8a78;
+  --text-disabled:  #c4b5a5;
+
+  /* Acento principal — Rosa Coral */
+  --accent:       #f4647a;
+  --accent-hover: #f2485f;
+  --accent-dim:   rgba(244, 100, 122, 0.12);
+  --accent-glow:  rgba(244, 100, 122, 0.2);
+
+  /* Acento secundario — Menta */
+  --mint:         #4ecdc4;
+  --mint-dim:     rgba(78, 205, 196, 0.12);
+
+  /* Semánticos */
+  --success:    #27ae60;
+  --success-bg: rgba(39, 174, 96, 0.1);
+  --danger:     #e74c3c;
+  --danger-bg:  rgba(231, 76, 60, 0.1);
+  --warning:    #f39c12;
+  --warning-bg: rgba(243, 156, 18, 0.1);
+  --info:       #3498db;
+  --info-bg:    rgba(52, 152, 219, 0.1);
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+
+/* Patrón de puntos sutil */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(244, 100, 122, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
+::-webkit-scrollbar-thumb { background: #e8d5cc; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #d4b8ae; }
+
+/* Selección */
+::selection { background: var(--accent); color: white; }
+
+/* Tipografía */
+.font-mono  { font-family: 'DM Mono', monospace; }
+.font-serif { font-family: 'DM Serif Display', serif; }
+
+/* Sombras suaves */
+.shadow-soft { box-shadow: 0 2px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04); }
+.shadow-card { box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04); }
+
+/* Glow del acento */
+.glow-accent { box-shadow: 0 0 30px var(--accent-glow); }
+
+/* Animaciones */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-4px); }
+}
+
+.animate-fade-up  { animation: fadeUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in  { animation: fadeIn 0.3s ease both; }
+.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+.animate-float    { animation: float 3s ease-in-out infinite; }
+
+/* Focus */
+input:focus, textarea:focus, select:focus, button:focus { outline: none; }
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  box-shadow: 0 0 0 2px white, 0 0 0 3.5px var(--accent);
+}
+
+/* Inputs */
+input, textarea, select {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-default);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  border-color: var(--accent);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
